@@ -62,13 +62,48 @@ p {
 /* ---------------------------------------
   BUTTONS               
 ----------------------------------------- */
+.slidecontainer {
+  width: 50%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100px;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #229ee6;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
 .section-btn {
     margin: 32px 0 0 0;
     padding: 0;
 }
 
 .section-btn a,
-.section-btn button {
+
+.section-btn button {
     line-height: 45px;
     -webkit-perspective: 1000px;
     -moz-perspective: 1000px;
@@ -78,7 +113,8 @@ p {
 }
 
 .section-btn a span,
-.section-btn button span {
+
+.section-btn button span {
     position: relative;
     display: inline-block;
     font-size: 18px;
@@ -99,7 +135,8 @@ p {
 }
 
 .csstransforms3d .section-btn a span::before,
-.csstransforms3d .section-btn button span::before {
+
+.csstransforms3d .section-btn button span::before {
     position: absolute;
     top: 100%;
     left: 0;
@@ -122,18 +159,26 @@ p {
 }
 
 .section-btn a:hover span,
-.section-btn a:focus span,
-.section-btn button:hover span,
-.section-btn button:focus span {
+
+.section-btn a:focus span,
+
+
+.section-btn button:hover span,
+
+.section-btn button:focus span {
     -webkit-transform: rotateX(90deg) translateY(-22px);
     -moz-transform: rotateX(90deg) translateY(-22px);
     transform: rotateX(90deg) translateY(-22px);
 }
 
 .csstransforms3d .section-btn a:hover span::before,
-.csstransforms3d .section-btn a:focus span::before,
-.csstransforms3d .section-btn button:hover span::before,
-.csstransforms3d .section-btn button:hover span::before {
+
+.csstransforms3d .section-btn a:focus span::before,
+
+
+.csstransforms3d .section-btn button:hover span::before,
+
+.csstransforms3d .section-btn button:hover span::before {
     background: #000000;
 }
 
@@ -163,7 +208,8 @@ a:focus {
 }
 
 *:before,
-*:after {
+
+*:after {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
@@ -190,14 +236,16 @@ a:focus {
 
 #about,
 #project,
-#team,
+
+#team,
 #contact,
 footer {
     background: #ffffff;
 }
 
 #about,
-#team,
+
+#team,
 #contact {
     padding-top: 100px;
     padding-bottom: 100px;
@@ -283,7 +331,8 @@ footer {
 }
 
 .custom-navbar .navbar-nav > li > a:hover,
-.custom-navbar .navbar-nav > li > a:focus {
+
+.custom-navbar .navbar-nav > li > a:focus {
     background-color: transparent;
     color: #ffffff;
 }
@@ -300,7 +349,8 @@ footer {
 }
 
 .custom-navbar .navbar-nav li a:hover:after,
-.custom-navbar .nav li.active > a:after {
+
+.custom-navbar .nav li.active > a:after {
     background: #ffffff;
     color: #ffffff;
     width: 100%;
@@ -470,7 +520,8 @@ footer {
 }
 
 #team h3,
-#team p {
+
+#team p {
     margin: 0;
 }
 
@@ -536,7 +587,8 @@ footer {
 }
 
 #contact .text-success,
-#contact .text-danger {
+
+#contact .text-danger {
     display: none;
     padding: 0 0 5px 20px;
 }
