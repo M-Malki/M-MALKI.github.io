@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html lang="en"> 
     <head> 
-        <title>My Projects Page </title>         
+        <title>My Projects Page</title>         
         <link rel="icon" class="js-site-favicon" type="image/svg+xml" href="images/favicon.svg">
         <meta charset="UTF-8"> 
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"> 
@@ -27,6 +27,7 @@
       
         <!-- HOME -->         
         <section id="home" class="parallax-section" style="z-index: 1;"> 
+
              
             <!-- NAV BAR -->  
             <section style="color: #ffffff; position: fixed; width: 100%; background-color: #000000; z-index: 1; font-size: 58px; top: 0px;">
@@ -37,6 +38,8 @@
         
             <!-- Banner -->  
             <div class="overlay" style="background-repeat: no-repeat; background-image: url('images/electronics.jpg'); background-position: center top; height: 700px; background-size: auto;"></div>             
+
+
             <div class="container"> 
                 <div class="row"> 
                     <div class="col-md-8 col-sm-12" style="margin-bottom: 362px; position: absolute; left: -4px; top: 252px; background-color: rgba(0, 0, 0, 0.66); padding-left: 146px; width: 755px; padding-bottom: 18px;"> 
@@ -50,6 +53,7 @@
         </section>         
         
     
+
         <!-- Content (Project: HV Sensor) -->       
         <section id="about" class="parallax-section" style="background-color: #f8f8f8; border-radius: 5px; padding-top: 0px; margin-top: 50px; padding-bottom: 0px; border: 1px solid #cacaca; width: 72%; min-width: 800px; margin-left: auto; margin-right: auto; ">
             
@@ -63,12 +67,15 @@
                 <div class="container" style="margin-top: -330px; margin-left: -110px; padding-right: 15px;">
                     <img src="images/Sen3.png" style="width: 400px; padding-top: 25px; margin-bottom: 40px; "/>
                 </div>
+
                 <div class="slidecontainer" style=" margin-left: auto; margin-right: auto;">
                     <p style="text-align: center; font-size: 25px;margin-bottom: 20px;">Move the slider to take look inside:</p>
                     <input type="range" min="0.01" max="100" value="1" class="slider" id="myRange">
                 </div>
+
                 <br><br>
                 <p style="text-align: left; font-size: 25px;margin-bottom: 20px;">The key component in this sensor is the AMC1200, it is an IC that's used in isolated current measurement, but with an appropriate voltage divider added to it can also measure voltage. Other than the IC and the DC-DC isolator; all components are off the shelf and inexpensive, the total cost of creating one sensor is only $36 including the PCB and the 3D printed case!</p>
+
                 
                 <script>
                     var slider = document.getElementById("myRange");
@@ -80,6 +87,7 @@
                 
                 <a href="https://github.com/M-Malki/Projects"><p style="text-align: left; font-size: 20px; color: rgba(2, 43, 179, 0.85); padding-top: 13px;">See codes, circuit, and more at my GitHub!</p></a>
             </div>
+
             
         </section>  
         
@@ -98,6 +106,7 @@
                     <div class="grid-item" style="grid-column-start: 1; grid-column-end: 3;">
                         <p style="text-align: left; font-size: 25px; margin-top: -10px;">Now here where things get more interesting, I have the data which is essentially the user&apos;s pulse, I could use the Arduino to measure the user&apos;s BPM directly, but I&apos;ll be limited by what the Arduino can do. Instead,&nbsp;I used the Arduino to communicate the data stream to the computer &nbsp;&nbsp;Now I can collect the in MATLAB as it is being stream, I can use this powerful tool to graph the data or process it however I want.</p>
                     </div>
+
                 </div>
             </div>
             <div class="container" style="width: 97%; position: relative;">
@@ -152,9 +161,11 @@
                 <img src="images/first%20cnc.jpg" style="width: 30%; margin-top: 25px;"/>
                 <a href="https://github.com/M-Malki/Projects"><p style="text-align: left; font-size: 20px; color: rgba(2, 43, 179, 0.85); padding-top: 13px;">See codes, circuit, and more at my GitHub!</p></a>
             </div>
+
             
         </section>
             
+
         <!-- FOOTER -->         
         <footer style="text-align: center; font-size: 90px; margin-top: 80px; height: 150px;"> 
             <div class="container" style="margin-top: 28px; font-size: `;">
