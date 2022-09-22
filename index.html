@@ -62,8 +62,24 @@
 
 
 
-<div class="ST79bf75348049454da2929315c2556bef"><form method="post" id="caspioform" action="https://c1hcy535.caspio.com/dp/441db000eb52620436624f06b2c1" style="margin: 0px;"><input type="hidden" name="cbUniqueFormId" id="cbUniqueFormId_6d0a5099451c35" value="_6d0a5099451c35"><input type="hidden" name="AppKey" value="441db000eb52620436624f06b2c1"><input type="hidden" name="PrevPageID" value="3"><input type="hidden" name="cbPageType" value="Insert"><input type="hidden" name="ClientQueryString" value=""><input type="hidden" name="pathname" value="file:///C:/Users/mrk/Desktop/GitHub/Blogstyle page - Copy/index.html"><input type="hidden" name="Mod0InsertRecord" value="1"><input type="hidden" name="Mod0InsertRecordPageID" value="3"><input type="hidden" name="cbAP" value="Caspio"><table class="cbTableDefaultCellspacing cbTableBorderAttribute" role="presentation"><tbody><tr><td class="cbTableCellPadding"><table data-cb-name="cbTable" id="cbTable_6d0a5099451c35" class="cbFormTableCellspacing cbFormTable" role="presentation"><tbody><tr class="cbFormTableRow"><td class="cbFormLabelCell cbFormLabel"><label for="InsertRecordTesText">TesText</label></td><td class="cbFormFieldCell"><input type="text" maxlength="255" name="InsertRecordTesText" id="InsertRecordTesText" value="" class="cbFormTextField" size="25"></td></tr><tr class="cbFormTableEvenRow"><td class="cbFormLabelCell cbFormLabel" data-cb-cell-name="InsertRecordTestNum_6d0a5099451c35LabelCell"><label for="InsertRecordTestNum">TestNum</label></td><td class="cbFormFieldCell"><span data-cb-name="cbFormDataCheckbox" class="cbFormData"><input type="checkbox" name="InsertRecordTestNum" id="InsertRecordTestNum" value="1"> <label for="InsertRecordTestNum">&nbsp;</label></span></td></tr><tr class="cbFormTableRow"><td colspan="2" class="cbSubmitButtonContainer"><input type="submit" name="Submit" id="Submit" value="Submit" class="cbSubmitButton"></td></tr></tbody></table></td></tr></tbody></table></form></div>
+<script>
 
+var http = new XMLHttpRequest();
+var url = 'https://c1hcy535.caspio.com/dp/441db000eb52620436624f06b2c1';
+var params = 'cbUniqueFormId=_6d0a5099451c35&AppKey=441db000eb52620436624f06b2c1&PrevPageID=3&cbPageType=Insert&ClientQueryString=&pathname=&Mod0InsertRecord=1&Mod0InsertRecordPageID=3&cbAP=Caspio&InsertRecordTesText=69&InsertRecordTestNum=1&Submit=Submit';
+http.open('POST', url, true);
+
+http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+http.onreadystatechange = function() {
+    if(http.readyState == 4 && http.status == 200) {
+        alert(http.responseText);
+    }
+}
+http.send(params);
+
+
+</script>
 
 
                 <p style="text-align: left; font-size: 25px;">This project is my graduation project, I worked on it with 3 other students in designing, implementing, and testing this sensor. It is a sensor that allows measurements of 1 KV DC or AC peak, it scales down the voltage either 100 time or 1000 time and isolates the user from the measured voltage.</p>
