@@ -13,7 +13,7 @@
     <body>
         <section id="displaySection" style="border-radius: 10px; border: 3px solid #282828; margin-right: 15%; margin-left: 15%; background-color: rgba(94, 109, 101, 0.82); display: grid; grid-template-columns: 0fr 1fr; grid-template-rows: 32px 61px; grid-template-areas: 'RT1 ST1' 'RT2 ST2'; min-height: 100px; max-height: 100px; text-align: center; color: #ffffff;">
             <h3 style="margin-top: 15px; white-space: nowrap; margin-left: 10px; font-family: 'Aldrich', sans-serif; font-size: 20px; color: #000000;">Room Temp</h3>
-            <h2 style="grid-area: RT2; margin-top: 5px; font-family: 'Aldrich', sans-serif; text-align: center; font-size: 43px; margin-left: 10px; color: #000000;">---</h2>
+            <h2 id="miniDisplay"style="grid-area: RT2; margin-top: 5px; font-family: 'Aldrich', sans-serif; text-align: center; font-size: 43px; margin-left: 10px; color: #000000;">---</h2>
             <h2 id="mainDisplay" style="font-family: 'Aldrich', sans-serif; margin-left: -6.284%; font-size: 65px; margin-top: 10px; color: #000000;">- - -</h2>
         </section>
         <section style="display: grid; grid-template-columns: 1fr 0fr 1fr; grid-template-rows: 130px 110px 90px; max-width: 276px; text-align: center; margin-left: auto; margin-right: auto; margin-top: 120px;">
@@ -39,7 +39,7 @@ var delayMinutes = 0;
 var stateCode="";
 getCode();
 
-
+ 	
 
 function sendRequest(req) {
    var xhttp = new XMLHttpRequest();
@@ -115,13 +115,20 @@ function getCode(){
 	var mainDisp=document.getElementById("mainDisplay");
 	var dispSect=document.getElementById("displaySection");
 	if (stateCode.slice(0 , 1)==1){
-		mainDisp.innerText=stateCode.slice(1);
+		mainDisp.innerText=stateCode.slice(1) + "°C" ;
 		dispSect.style.backgroundColor = "rgba(3, 117, 56, 0.82)";
 		if (stateCode.slice(1 , 3)==88){mainDisp.innerText="FAN";}
 	} else {
 		mainDisp.innerText="- - -";
 		dispSect.style.backgroundColor = "rgba(94, 109, 101, 0.82)";
 	}
+	var xmlHttp2 = new XMLHttpRequest();
+	xmlHttp2.open( "GET", "https://c1hcy535.caspio.com/dp/441db000f7450a740a4f408a93d6?cbqe=QXBwS2V5PTQ0MWRiMDAwZjc0NTBhNzQwYTRmNDA4YTkzZDYmanM9dHJ1ZSZjYkVtYkRlcGxveVdpdGg9bmV3X2FzeW5jX2VtYmVkanMmY2JEYXRhcGFnZUFuY2hvcklkPWRwX2FuY2hvcl9pZF84Njk0NjEwMDAwJnBhdGhuYW1lPWZpbGU6Ly8vQzovVXNlcnMvbXJrL0Rlc2t0b3AvR2l0SHViL0Jsb2dzdHlsZSUyMHBhZ2UvaW5kZXglMjAtJTIwQ29weS5odG1sJmNiU2NyZWVuV2lkdGg9MTkyMCZjYkVtYlF1ZXJ5U3RyPSZjYlBhcmFtTGlzdD0=&cbEmbedTimeStamp=1666391270767", false );
+	xmlHttp2.send( null );
+	var indx2 = xmlHttp2.responseText.search("~")+1;
+	tempr= xmlHttp2.responseText.slice(indx2 , indx2 +2);
+	var miniDisp=document.getElementById("miniDisplay");
+	miniDisp.innerText=tempr + "°C";
 }
 </script>
 
