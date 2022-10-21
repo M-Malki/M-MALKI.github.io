@@ -1,70 +1,80 @@
 <!DOCTYPE html>
-<html>
-<body>
-<style>
-.button {
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>New page</title>
+        <link rel="stylesheet" href="css/reset.css">
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aldrich&display=swap">
+    </head>
+    <body>
+        <section id="displaySection" style="border-radius: 10px; border: 3px solid #282828; margin-right: 15%; margin-left: 15%; background-color: rgba(94, 109, 101, 0.82); display: grid; grid-template-columns: 0fr 1fr; grid-template-rows: 32px 61px; grid-template-areas: 'RT1 ST1' 'RT2 ST2'; min-height: 100px; max-height: 100px; text-align: center; color: #ffffff;">
+            <h3 style="margin-top: 15px; white-space: nowrap; margin-left: 10px; font-family: 'Aldrich', sans-serif; font-size: 20px; color: #000000;">Room Temp</h3>
+            <h2 style="grid-area: RT2; margin-top: 5px; font-family: 'Aldrich', sans-serif; text-align: center; font-size: 43px; margin-left: 10px; color: #000000;">---</h2>
+            <h2 id="mainDisplay" style="font-family: 'Aldrich', sans-serif; margin-left: -6.284%; font-size: 65px; margin-top: 10px; color: #000000;">- - -</h2>
+        </section>
+        <section style="display: grid; grid-template-columns: 1fr 0fr 1fr; grid-template-rows: 130px 110px 90px; max-width: 276px; text-align: center; margin-left: auto; margin-right: auto; margin-top: 120px;">
+            <img src="https://i.ibb.co/M27tcHd/Fan.png" style="grid-area: 2 / 3 / 3 / 4; width: 70px; margin-left: 10px; margin-top: 20px;"/>
+            <img onclick="timeDialog()" src="https://i.ibb.co/QKh2j8h/Time.png" style="grid-area:2 / 1 / 3 / 2;"/>
+            <img src="https://i.ibb.co/2gVyy4z/PWR.png" style="grid-area: 2 / 2 / 3 / 3; width: 100px; margin-right: 60px; margin-left: 50px; margin-top: 5px;"/>
+	    <img onclick="changeTemp(-1)" src="https://i.ibb.co/dW3R4Xj/Down.png" style="grid-area: 3 / 2 / 4 / 3; width: 100px; margin-top: 73px; margin-left: 50px; margin-right: 30px;"/>
+	    <img onclick="changeTemp(1)" src="https://i.ibb.co/m4gtCJr/UP.png" style="grid-area: 1 / 2 / 2 / 3; width: 100px; margin-top: 5px; margin-left: 50px;"/>
+        </section>
+        <section id="timePrompt" style="z-index: 10; position: relative; top: -295px; width: 100%; height: 384px; background-color: #1e1a2b; display: none; text-align: center; grid-template-columns: 1fr; grid-template-rows: 100px 100px 100px; margin-top: -49px;">
+            <h2 style="padding-top: 24px; color: #e9e9e9;">Enter Time&nbsp;</h2>
+            <div style="width: 350px; margin-left: auto; margin-right: auto;">
+                <input type="time" id="UTI" name="UTI" style="width: 200px; height: 50px; margin-top: 27px;">
+            </div>
+            <div style="width: 350px; margin-left: auto; margin-right: auto; margin-top: 9px;">
+		<button onclick="setTime()" id="subtime" style="width: 150px; height: 50px; margin-top: 34px;">OK</button>
+                <button onclick="resetTime()" id="cancel" style="width: 150px; height: 50px; margin-top: 34px;">Cancel</button>
+            </div>
+        </section>
 
-.button1 {background-color: #1f6ff0;} /* Green */
-.button2 {background-color: #c41247;} /* Blue */
-</style>
-<div style="text-align:center">
-<h2 id="demo">The onclick Event</h2>
-<button class="button button2" onclick="myFunction('CP27')">ON/OFF</button>
- <br> <br>
- 
-<button class="button button1" onclick="myFunction('CFXX')">FAN</button>
- <br> <br>
-
-<button class="button button1" onclick="myFunction('CS24')">24C</button>
- <br> <br>
- 
-<button class="button button1" onclick="myFunction('CS25')">25C</button>
- <br> <br>
-
-<button class="button button1" onclick="myFunction('CS26')">26C</button>
- <br>  <br>
- 
-<button class="button button1" onclick="myFunction('CS27')">27C</button>
- <br> <br>
-
-<button class="button button1" onclick="myFunction('CS28')">28C</button>
- <br> <br>
- <input type="text" id="time" name="fname" value="000"><br><br>
-
-</div>
 <script>
+var delayMinutes = 0;
+var stateCode="";
+getCode();
 
-function myFunction(x){
 
-var http = new XMLHttpRequest();
-var url = 'https://c1hcy535.caspio.com/dp/441db000eb52620436624f06b2c1';
-var params = 'cbUniqueFormId=_379f2c0336ad2e&AppKey=441db000eb52620436624f06b2c1&PrevPageID=3&cbPageType=Insert&ClientQueryString=&pathname=&Mod0InsertRecord=1&Mod0InsertRecordPageID=3&cbAP=Caspio&InsertRecordCode=~' + x + document.getElementById("time").value + '&Submit=Submit';
-http.open('POST', url, true);
-
-http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-http.onreadystatechange = function() {
-    if(http.readyState == 4 && http.status == 200) {
-        }
+function changeTemp(inc){
+if ((parseInt(stateCode)+inc > 123) && (parseInt(stateCode)+inc < 129))
+stateCode=parseInt(stateCode)+inc;
+stateCode=stateCode.toString()
+var mainDisp=document.getElementById("mainDisplay");
+mainDisp.innerText=stateCode.slice(1);
 }
-http.send(params);
-
-
-document.getElementById("demo").innerHTML ="Done!";
-
+function timeDialog() { document.getElementById("timePrompt").style.display = "grid";}
+function resetTime() { document.getElementById("timePrompt").style.display = "none";}
+function setTime() { 
+	var now = new Date();	
+	document.getElementById("timePrompt").style.display = "none";
+	timeinput=document.getElementById("UTI").value.split(':');
+	if ( parseInt(timeinput[0]) < now.getHours() ){ timeinput[0]=parseInt(timeinput[0]) + 24; }
+	var minutes = (parseInt(timeinput[0])-now.getHours())*60+(parseInt(timeinput[1])-now.getMinutes());
+	if ( !(minutes >0) ){ minutes =0; }
+	delayMinutes=minutes;
+	}
+function getCode(){
+	var xmlHttp = new XMLHttpRequest();
+	xmlHttp.open( "GET", "https://c1hcy535.caspio.com/dp/441db000db181ad58c964df0ad85?cbqe=QXBwS2V5PTQ0MWRiMDAwZGIxODFhZDU4Yzk2NGRmMGFkODUmanM9dHJ1ZSZjYkVtYkRlcGxveVdpdGg9bmV3X2FzeW5jX2VtYmVkanMmY2JEYXRhcGFnZUFuY2hvcklkPWRwX2FuY2hvcl9pZF8xMDQxMTAwMDAmcGF0aG5hbWU9ZmlsZTovLy9DOi9Vc2Vycy9tcmsvRGVza3RvcC9HaXRIdWIvQmxvZ3N0eWxlJTIwcGFnZSUyMC0lMjBDb3B5L2luZGV4Lmh0bWwmY2JTY3JlZW5XaWR0aD0xOTIwJmNiRW1iUXVlcnlTdHI9JmNiUGFyYW1MaXN0PQ==&cbEmbedTimeStamp=1664541762095", false );
+	xmlHttp.send( null );
+	var indx = xmlHttp.responseText.search("~")+8;
+	stateCode= xmlHttp.responseText.slice(indx , indx +3);
+	var mainDisp=document.getElementById("mainDisplay");
+	var dispSect=document.getElementById("displaySection");
+	if (stateCode.slice(0 , 1)==1){
+		mainDisp.innerText=stateCode.slice(1);
+		dispSect.style.backgroundColor = "rgba(3, 117, 56, 0.82)";
+	} else {
+		mainDisp.innerText="- - -";
+		dispSect.style.backgroundColor = "rgba(94, 109, 101, 0.82)";
+	}
 }
-
 </script>
 
-</body>
+    </body>
 </html>
