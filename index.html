@@ -11,6 +11,10 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aldrich&display=swap">
     </head>
     <body>
+	    
+	<button onclick="Seenut()" id="Seenut" style="width: 150px; height: 50px; margin-top: 34px;">Seenut</button>
+	    
+	    
         <section id="displaySection" style="border-radius: 10px; border: 3px solid #282828; margin-right: 15%; margin-left: 15%; background-color: rgba(94, 109, 101, 0.82); display: grid; grid-template-columns: 0fr 1fr; grid-template-rows: 32px 61px; grid-template-areas: 'RT1 ST1' 'RT2 ST2'; min-height: 100px; max-height: 100px; text-align: center; color: #ffffff;">
             <h3 style="margin-top: 15px; white-space: nowrap; margin-left: 10px; font-family: 'Aldrich', sans-serif; font-size: 20px; color: #000000;">Room Temp</h3>
             <h2 id="miniDisplay"style="grid-area: RT2; margin-top: 5px; font-family: 'Aldrich', sans-serif; text-align: center; font-size: 43px; margin-left: 10px; color: #000000;">---</h2>
@@ -39,7 +43,11 @@ var delayMinutes = 0;
 var stateCode="";
 getCode();
 
- 	
+function Seenut() { 
+	window.location.href = "1/index.html";
+}
+	
+	
 
 function sendRequest(req) {
    var xhttp = new XMLHttpRequest();
